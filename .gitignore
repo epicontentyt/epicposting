@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Jekyll
+_site/
+.jekyll-cache/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
