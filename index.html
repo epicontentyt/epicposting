@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epicposting</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .post { border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Epicposting</h1>
+    <p>Here are the posts from our community.</p>
+    <div id="posts-container"></div>
+    <script>
+        fetch('posts.json')
+            .then(response => response.json())
+            .then(posts => {
+                const container = document.getElementById('posts-container');
+                posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'post';
+                    postElement.innerHTML = `
+                        <h2>${post.title}</h2>
+                        <p>${post.text}</p>
+                        ${post.media ? `<img src="${post.media}" alt="${post.title}" style="max-width:100%;">` : ''}
+                    `;
+                    container.appendChild(postElement);
+                });
+            });
+    </script>
+</body>
+</html>
